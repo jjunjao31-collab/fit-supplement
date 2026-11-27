@@ -136,6 +136,9 @@ export default function Footer() {
             <Link href="/login" className="hover:text-textPrimary transition-colors">
               บัญชีสมาชิก
             </Link>
+            <Link href="/admin/login" className="hover:text-textPrimary transition-colors">
+              ผู้ดูแลระบบ
+            </Link>
           </div>
         </div>
 

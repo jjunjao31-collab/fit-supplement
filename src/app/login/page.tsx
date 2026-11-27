@@ -125,20 +125,32 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <div className="pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-            <span className="text-textSecondary">
-              ยังไม่มีบัญชี?{' '}
-              <Link href="/register" className="text-primary font-medium hover:underline">
-                สมัครสมาชิก
+          <div className="pt-6 border-t border-border space-y-3 text-xs">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+              <span className="text-textSecondary">
+                ยังไม่มีบัญชี?{' '}
+                <Link href="/register" className="text-primary font-medium hover:underline">
+                  สมัครสมาชิก
+                </Link>
+              </span>
+              <Link
+                href="/store"
+                className="inline-flex items-center gap-1 text-textSecondary hover:text-textPrimary transition-colors"
+              >
+                <span>ไปหน้าร้านค้า</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
               </Link>
-            </span>
-            <Link
-              href="/store"
-              className="inline-flex items-center gap-1 text-textSecondary hover:text-textPrimary transition-colors"
-            >
-              <span>ไปหน้าร้านค้า</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </Link>
+            </div>
+            <div className="pt-3 border-t border-border/60 flex items-center justify-between">
+              <span className="text-textSecondary">ผู้ดูแลระบบหรือพนักงานคลังสินค้า?</span>
+              <Link
+                href="/admin/login"
+                className="inline-flex items-center gap-1 text-textPrimary font-medium hover:text-primary transition-colors"
+              >
+                <span>เข้าสู่ระบบ Admin</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
           </div>
         </div>
       </BlurFade>
