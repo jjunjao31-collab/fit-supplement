@@ -1,0 +1,68 @@
+import type { Reference } from '@/types';
+
+export const siteReferences: Reference[] = [
+  {
+    id: 'nih-ods-sports',
+    title: 'Dietary Supplements for Exercise and Athletic Performance — Health Professional Fact Sheet',
+    source: 'National Institutes of Health (NIH) Office of Dietary Supplements',
+    url: 'https://ods.od.nih.gov/factsheets/ExerciseAndAthleticPerformance-HealthProfessional/',
+    year: 2022,
+    accessed: '2024-11-01',
+  },
+  {
+    id: 'ais-supplements',
+    title: 'AIS Position Statement: Supplements and Sports Foods in High Performance Sport',
+    source: 'Australian Institute of Sport (AIS)',
+    url: 'https://www.ausport.gov.au/ais/nutrition/supplements',
+    year: 2021,
+    accessed: '2024-11-01',
+  },
+  {
+    id: 'ais-group-a',
+    title: 'AIS Sports Supplement Framework: Group A Supplements',
+    source: 'Australian Institute of Sport (AIS)',
+    url: 'https://www.ausport.gov.au/ais/nutrition/supplements/group_a',
+    year: 2023,
+    accessed: '2024-11-01',
+  },
+  {
+    id: 'issn-protein',
+    title: 'International Society of Sports Nutrition position stand: protein and exercise',
+    source: 'Journal of the International Society of Sports Nutrition (JISSN)',
+    url: 'https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0177-8',
+    year: 2017,
+    accessed: '2024-11-01',
+  },
+  {
+    id: 'issn-creatine',
+    title: 'International Society of Sports Nutrition position stand: safety and efficacy of creatine supplementation in exercise, sport, and medicine',
+    source: 'Journal of the International Society of Sports Nutrition (JISSN)',
+    url: 'https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0173-z',
+    year: 2017,
+    accessed: '2024-11-01',
+  },
+  {
+    id: 'issn-caffeine',
+    title: 'International society of sports nutrition position stand: caffeine and exercise performance',
+    source: 'Journal of the International Society of Sports Nutrition (JISSN)',
+    url: 'https://jissn.biomedcentral.com/articles/10.1186/s12970-020-00383-4',
+    year: 2021,
+    accessed: '2024-11-01',
+  },
+  {
+    id: 'issn-beta-alanine',
+    title: 'International Society of Sports Nutrition position stand: Beta-Alanine',
+    source: 'Journal of the International Society of Sports Nutrition (JISSN)',
+    url: 'https://jissn.biomedcentral.com/articles/10.1186/s12970-015-0090-y',
+    year: 2015,
+    accessed: '2024-11-01',
+  },
+  {
+    id: 'fda-thailand',
+    title: 'ระบบตรวจสอบการอนุญาตผลิตภัณฑ์สุขภาพ — สำนักงานคณะกรรมการอาหารและยา (อย.)',
+    source: 'สำนักงานคณะกรรมการอาหารและยา กระทรวงสาธารณสุข ประเทศไทย',
+    url: 'https://www.fda.moph.go.th/',
+    year: 2024,
+    accessed: '2024-11-01',
+  },
+];
