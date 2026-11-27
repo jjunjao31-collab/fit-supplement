@@ -105,7 +105,7 @@ export default function AdminDashboardPage() {
       if (prodData.success) setProducts(prodData.products);
       if (orderData.success) setOrders(orderData.orders);
     } catch {
-      showToast('error', 'ไม่สามารถโหลดข้อมูลจาก MySQL ได้');
+      showToast('error', 'ไม่สามารถโหลดข้อมูลจากฐานข้อมูล SQL ได้');
     } finally {
       setLoading(false);
     }
@@ -174,7 +174,7 @@ export default function AdminDashboardPage() {
       setProducts((prev) =>
         prev.map((p) => (p.id === product.id ? { ...p, stock: nextStock, inStock: nextStock > 0 } : p))
       );
-      showToast('success', `เติมสต็อก "${product.name}" +${addAmount} ชิ้น (รวม ${nextStock} ชิ้น) ลง MySQL แล้ว`);
+      showToast('success', `เติมสต็อก "${product.name}" +${addAmount} ชิ้น (รวม ${nextStock} ชิ้น) ลงฐานข้อมูล SQL แล้ว`);
     } catch {
       showToast('error', 'เกิดข้อผิดพลาดในการเติมสต็อก');
     }
@@ -238,7 +238,7 @@ export default function AdminDashboardPage() {
         )
       );
       setEditingProduct(null);
-      showToast('success', `บันทึกการแก้ไขสินค้า "${editForm.name}" ลง MySQL แล้ว`);
+      showToast('success', `บันทึกการแก้ไขสินค้า "${editForm.name}" ลงฐานข้อมูล SQL แล้ว`);
     } catch {
       showToast('error', 'เกิดข้อผิดพลาดในการบันทึกข้อมูล');
     } finally {
@@ -260,7 +260,7 @@ export default function AdminDashboardPage() {
         return;
       }
       setProducts((prev) => prev.filter((p) => p.id !== deletingProduct.id));
-      showToast('success', `ลบสินค้า "${deletingProduct.name}" ออกจาก MySQL แล้ว`);
+      showToast('success', `ลบสินค้า "${deletingProduct.name}" ออกจากฐานข้อมูล SQL แล้ว`);
       setDeletingProduct(null);
     } catch {
       showToast('error', 'เกิดข้อผิดพลาดในการลบสินค้า');
@@ -301,7 +301,7 @@ export default function AdminDashboardPage() {
           suitableFor: '',
           howToUse: '',
         });
-        showToast('success', 'เพิ่มสินค้าใหม่ลง MySQL เรียบร้อยแล้ว');
+        showToast('success', 'เพิ่มสินค้าใหม่ลงฐานข้อมูล SQL เรียบร้อยแล้ว');
         loadData();
       } else {
         showToast('error', data.message || 'ไม่สามารถเพิ่มสินค้าได้');
@@ -345,7 +345,7 @@ export default function AdminDashboardPage() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-10 pb-8 flex flex-col lg:flex-row lg:items-end justify-between gap-5">
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-2.5 text-[10px] font-mono uppercase tracking-[0.22em]">
-              <span className="text-primary font-semibold">MYSQL · EXECUTIVE ANALYTICS</span>
+              <span className="text-primary font-semibold">CLOUD SQL · EXECUTIVE ANALYTICS</span>
               {adminUser?.role && (
                 <>
                   <span className="text-border">|</span>
@@ -365,7 +365,7 @@ export default function AdminDashboardPage() {
               type="button"
               onClick={loadData}
               className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium border border-border text-textSecondary hover:text-textPrimary hover:border-textPrimary transition-colors cursor-pointer"
-              title="รีเฟรชข้อมูลสดจาก MySQL"
+              title="รีเฟรชข้อมูลสดจากฐานข้อมูล SQL"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
               <span>ซิงก์ SQL</span>
@@ -513,7 +513,7 @@ export default function AdminDashboardPage() {
               </div>
 
               <div className="text-[11px] font-mono text-textSecondary">
-                แสดง {filteredProducts.length} จาก {products.length} รายการใน MySQL
+                แสดง {filteredProducts.length} จาก {products.length} รายการในฐานข้อมูล SQL
               </div>
             </div>
 
@@ -637,7 +637,7 @@ export default function AdminDashboardPage() {
             <div className="flex items-center justify-between border-b border-border/70 pb-4">
               <div>
                 <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-primary font-semibold block">
-                  MYSQL ORDERS TABLE
+                  SQL ORDERS TABLE
                 </span>
                 <h2 className="text-base font-semibold text-textPrimary">
                   รายการคำสั่งซื้อทั้งหมด ({orders.length} บิล)
@@ -688,7 +688,7 @@ export default function AdminDashboardPage() {
                         <select
                           value={o.status}
                           onChange={(e) => handleUpdateOrderStatus(o.id, e.target.value)}
-                          className="bg-secondary border border-border px-2.5 py-1.5 text-xs font-medium text-textPrimary focus:outline-none focus:border-primary cursor-pointer"
+                          className="bg-secondary border border-border px-2.5 py-1.5 text-xs font-medium text-textPrimary whitespace-nowrap min-w-[138px] focus:outline-none focus:border-primary cursor-pointer"
                         >
                           <option value="pending">รอชำระเงิน</option>
                           <option value="paid">ชำระเงินแล้ว</option>
@@ -716,7 +716,7 @@ export default function AdminDashboardPage() {
                   NEW CATALOG ENTRY
                 </span>
                 <h3 className="font-semibold text-base text-textPrimary">
-                  เพิ่มสินค้าใหม่เข้าสู่ระบบ MySQL
+                  เพิ่มสินค้าใหม่เข้าสู่ระบบ SQL
                 </h3>
               </div>
               <button
@@ -855,7 +855,7 @@ export default function AdminDashboardPage() {
                   type="submit"
                   className="px-5 py-2 bg-textPrimary text-white hover:bg-primary font-medium transition-colors cursor-pointer"
                 >
-                  บันทึกลงฐานข้อมูล MySQL
+                  บันทึกลงฐานข้อมูล SQL
                 </button>
               </div>
             </form>
@@ -871,7 +871,7 @@ export default function AdminDashboardPage() {
               <div className="flex items-center gap-2">
                 <Pencil className="w-4 h-4 text-primary" />
                 <h3 className="font-semibold text-base text-textPrimary">
-                  แก้ไขข้อมูลสินค้าใน MySQL
+                  แก้ไขข้อมูลสินค้าในฐานข้อมูล SQL
                 </h3>
               </div>
               <button
@@ -984,7 +984,7 @@ export default function AdminDashboardPage() {
                 <h3 className="font-semibold text-base text-textPrimary">ยืนยันการลบสินค้า</h3>
                 <p className="text-xs text-textSecondary leading-relaxed">
                   คุณต้องการลบ <strong className="text-textPrimary">{deletingProduct.name}</strong>{' '}
-                  ออกจากฐานข้อมูล MySQL ใช่หรือไม่ การดำเนินการนี้ไม่สามารถย้อนกลับได้
+                  ออกจากฐานข้อมูล SQL ใช่หรือไม่ การดำเนินการนี้ไม่สามารถย้อนกลับได้
                 </p>
               </div>
             </div>

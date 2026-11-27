@@ -67,7 +67,7 @@ export default function AdminLoginPage() {
               ผู้ดูแลระบบ / เจ้าหน้าที่
             </h1>
             <p className="text-xs text-textSecondary">
-              จัดการคลังสินค้า คำสั่งซื้อ สิทธิ์ผู้ใช้งาน และฐานข้อมูล MySQL
+              จัดการคลังสินค้า คำสั่งซื้อ สิทธิ์ผู้ใช้งาน และฐานข้อมูล SQL
             </p>
           </div>
 

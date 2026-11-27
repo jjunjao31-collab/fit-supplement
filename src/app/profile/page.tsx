@@ -119,7 +119,7 @@ export default function MemberProfilePage() {
       const data = await res.json();
       if (data.success && data.user) {
         setUser(data.user);
-        setSaveSuccessMsg('อัปเดตที่อยู่จัดส่งในฐานข้อมูล MySQL สำเร็จแล้ว');
+        setSaveSuccessMsg('อัปเดตที่อยู่จัดส่งในฐานข้อมูล SQL สำเร็จแล้ว');
         setTimeout(() => {
           setIsEditingAddress(false);
           setSaveSuccessMsg('');

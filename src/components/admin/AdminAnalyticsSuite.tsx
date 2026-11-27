@@ -889,7 +889,7 @@ export default function AdminAnalyticsSuite({
               )}
             </div>
             <span className="font-mono text-[10px] uppercase tracking-[0.14em]">
-              MYSQL LIVE AGGREGATION
+              CLOUD SQL LIVE AGGREGATION
             </span>
           </div>
         </motion.section>
@@ -1312,7 +1312,7 @@ export default function AdminAnalyticsSuite({
                               disabled={restockingId === p.id}
                               onClick={() => handleQuickRestockClick(p)}
                               className="px-2.5 py-1 text-[10px] font-mono font-semibold border border-textPrimary bg-textPrimary text-white hover:bg-primary hover:border-primary transition-colors cursor-pointer disabled:opacity-50 inline-flex items-center gap-1"
-                              title="เติมสต็อกด่วน +30 ชิ้นลง MySQL"
+                              title="เติมสต็อกด่วน +30 ชิ้นลงฐานข้อมูล SQL"
                             >
                               {restockingId === p.id ? (
                                 <RefreshCw className="w-3 h-3 animate-spin" />

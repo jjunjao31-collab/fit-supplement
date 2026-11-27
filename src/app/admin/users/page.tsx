@@ -160,7 +160,7 @@ export default function AdminUsersPage() {
         <section className="space-y-4">
           <div className="flex items-baseline justify-between">
             <h2 className="text-sm font-semibold text-textPrimary">
-              บัญชีทั้งหมดใน MySQL ({users.length} บัญชี)
+              บัญชีทั้งหมดในระบบ SQL ({users.length} บัญชี)
             </h2>
             <span className="text-xs text-textSecondary">
               ระบบป้องกันไม่ให้ Admin ลดสิทธิ์ของบัญชีตัวเอง

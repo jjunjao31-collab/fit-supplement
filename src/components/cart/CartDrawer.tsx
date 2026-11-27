@@ -109,6 +109,8 @@ export default function CartDrawer() {
         const parsed = data?.user || data;
         if (parsed && parsed.id) {
           setLoggedInUser(parsed);
+          const savedAddr = String(parsed.address || '');
+          const zipMatch = savedAddr.match(/\b(\d{5})\b/);
           setFormData((prev) =>
             prev.customerName
               ? prev
@@ -116,7 +118,8 @@ export default function CartDrawer() {
                   ...prev,
                   customerName: parsed.fullname || parsed.fullName || '',
                   customerPhone: parsed.phone || '',
-                  houseNo: parsed.address || '',
+                  houseNo: savedAddr,
+                  postalCode: zipMatch ? zipMatch[1] : prev.postalCode,
                 }
           );
         } else {
@@ -145,11 +148,14 @@ export default function CartDrawer() {
 
   const handleAutofillMember = () => {
     if (!loggedInUser) return;
+    const savedAddr = loggedInUser.address || '';
+    const zipMatch = savedAddr.match(/\b(\d{5})\b/);
     setFormData((prev) => ({
       ...prev,
       customerName: loggedInUser.fullname || loggedInUser.fullName || prev.customerName,
       customerPhone: loggedInUser.phone || prev.customerPhone,
-      houseNo: loggedInUser.address || prev.houseNo,
+      houseNo: savedAddr || prev.houseNo,
+      postalCode: zipMatch ? zipMatch[1] : prev.postalCode,
     }));
   };
 
@@ -163,12 +169,20 @@ export default function CartDrawer() {
 
     setLoading(true);
 
+    const baseAddr = formData.houseNo.trim();
+    const includeProvince = Boolean(formData.province && !baseAddr.includes(formData.province));
+    const includePostal = Boolean(formData.postalCode && !baseAddr.includes(formData.postalCode));
+
     const fullAddress = [
-      formData.houseNo,
-      formData.subdistrict ? `ต./แขวง ${formData.subdistrict}` : '',
-      formData.district ? `อ./เขต ${formData.district}` : '',
-      formData.province ? `จ.${formData.province}` : '',
-      formData.postalCode,
+      baseAddr,
+      formData.subdistrict && !baseAddr.includes(formData.subdistrict)
+        ? `ต./แขวง ${formData.subdistrict}`
+        : '',
+      formData.district && !baseAddr.includes(formData.district)
+        ? `อ./เขต ${formData.district}`
+        : '',
+      includeProvince ? `จ.${formData.province}` : '',
+      includePostal ? formData.postalCode : '',
     ]
       .filter(Boolean)
       .join(' ');
